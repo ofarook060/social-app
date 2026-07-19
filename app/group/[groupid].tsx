@@ -1,10 +1,10 @@
 import { useEffect, useState, useCallback } from 'react';
 import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, RefreshControl, Alert } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
-import { api } from '../../lib/api';
-import { Group, Post } from '../../lib/types';
-import { imageUrl } from '../../lib/utils';
-import { COLORS } from '../../constants/config';
+import { api } from '../../src/lib/api';
+import { Group, Post } from '../../src/lib/types';
+import { imageUrl } from '../../src/lib/utils';
+import { COLORS } from '../../src/constants/config';
 import PostCard from '../../components/PostCard';
 
 export default function GroupScreen() {

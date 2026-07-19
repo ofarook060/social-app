@@ -1,12 +1,12 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, Image } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
-import { api } from '../../lib/api';
-import { Message } from '../../lib/types';
-import { imageUrl, timeAgo } from '../../lib/utils';
-import { COLORS } from '../../constants/config';
+import { api } from '../../src/lib/api';
+import { Message } from '../../src/lib/types';
+import { imageUrl, timeAgo } from '../../src/lib/utils';
+import { COLORS } from '../../src/constants/config';
 import { Ionicons } from '@expo/vector-icons';
-import { useAuth } from '../../lib/auth';
+import { useAuth } from '../../src/lib/auth';
 
 export default function ChatScreen() {
   const { userid } = useLocalSearchParams<{ userid: string }>();

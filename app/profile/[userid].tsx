@@ -1,11 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, RefreshControl } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
-import { api } from '../../lib/api';
-import { User, Post } from '../../lib/types';
-import { imageUrl, fullName, isOnline } from '../../lib/utils';
-import { COLORS } from '../../constants/config';
-import { useAuth } from '../../lib/auth';
+import { api } from '../../src/lib/api';
+import { User, Post } from '../../src/lib/types';
+import { imageUrl, fullName, isOnline } from '../../src/lib/utils';
+import { COLORS } from '../../src/constants/config';
+import { useAuth } from '../../src/lib/auth';
 import PostCard from '../../components/PostCard';
 
 export default function ProfileScreen() {

@@ -1,10 +1,10 @@
 import { useEffect, useState, useCallback } from 'react';
 import { View, FlatList, RefreshControl, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { api } from '../../lib/api';
-import { Notification } from '../../lib/types';
-import { COLORS } from '../../constants/config';
+import { api } from '../../src/lib/api';
+import { Notification } from '../../src/lib/types';
+import { COLORS } from '../../src/constants/config';
 import { Ionicons } from '@expo/vector-icons';
-import { timeAgo, fullName } from '../../lib/utils';
+import { timeAgo, fullName } from '../../src/lib/utils';
 import { router } from 'expo-router';
 
 function getActivityIcon(activity: string) {

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { api } from '../../lib/api';
-import { COLORS } from '../../constants/config';
+import { api } from '../../src/lib/api';
+import { COLORS } from '../../src/constants/config';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 

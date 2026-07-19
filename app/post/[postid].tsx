@@ -1,10 +1,10 @@
 import { useEffect, useState, useCallback } from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity, FlatList, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
-import { api } from '../../lib/api';
-import { Post } from '../../lib/types';
-import { imageUrl, fullName, timeAgo } from '../../lib/utils';
-import { COLORS } from '../../constants/config';
+import { api } from '../../src/lib/api';
+import { Post } from '../../src/lib/types';
+import { imageUrl, fullName, timeAgo } from '../../src/lib/utils';
+import { COLORS } from '../../src/constants/config';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function PostScreen() {

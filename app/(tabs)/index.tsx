@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import { View, FlatList, RefreshControl, StyleSheet, Text } from 'react-native';
-import { api } from '../../lib/api';
-import { Post } from '../../lib/types';
-import { COLORS } from '../../constants/config';
+import { api } from '../../src/lib/api';
+import { Post } from '../../src/lib/types';
+import { COLORS } from '../../src/constants/config';
 import PostCard from '../../components/PostCard';
 
 export default function HomeScreen() {

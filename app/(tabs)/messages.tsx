@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import { View, FlatList, RefreshControl, Text, StyleSheet } from 'react-native';
-import { api } from '../../lib/api';
-import { Thread } from '../../lib/types';
-import { COLORS } from '../../constants/config';
+import { api } from '../../src/lib/api';
+import { Thread } from '../../src/lib/types';
+import { COLORS } from '../../src/constants/config';
 import ThreadCard from '../../components/ThreadCard';
 
 export default function MessagesScreen() {

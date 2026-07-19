@@ -1,5 +1,5 @@
 import { Redirect, Stack } from 'expo-router';
-import { useAuth } from '../../lib/auth';
+import { useAuth } from '../../src/lib/auth';
 import { View, ActivityIndicator } from 'react-native';
 
 export default function AuthLayout() {
