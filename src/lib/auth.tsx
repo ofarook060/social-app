@@ -47,7 +47,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
       setLoading(false);
     })();
-  }, []);
+  }, [refreshUser]);
 
   const login = async (email: string, password: string) => {
     const res = await api.post('/api/auth/login.php', { email, password });

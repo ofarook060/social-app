@@ -1,8 +1,8 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Thread } from '../lib/types';
-import { imageUrl, fullName, timeAgo } from '../lib/utils';
-import { COLORS } from '../constants/config';
+import { Thread } from '../src/lib/types';
+import { imageUrl, fullName, timeAgo } from '../src/lib/utils';
+import { COLORS } from '../src/constants/config';
 
 interface Props {
   thread: Thread;

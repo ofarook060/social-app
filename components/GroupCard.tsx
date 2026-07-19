@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-import { COLORS } from '../constants/config';
-import { imageUrl } from '../lib/utils';
+import { COLORS } from '../src/constants/config';
+import { imageUrl } from '../src/lib/utils';
 import { Ionicons } from '@expo/vector-icons';
 
 interface Props {

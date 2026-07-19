@@ -1,8 +1,8 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-import { User } from '../lib/types';
-import { imageUrl, fullName, isOnline } from '../lib/utils';
-import { COLORS } from '../constants/config';
+import { User } from '../src/lib/types';
+import { imageUrl, fullName, isOnline } from '../src/lib/utils';
+import { COLORS } from '../src/constants/config';
 
 interface Props {
   user: User;
