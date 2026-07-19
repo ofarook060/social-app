@@ -1,0 +1,44 @@
+import { useEffect, useState, useCallback } from 'react';
+import { View, FlatList, RefreshControl, StyleSheet, Text } from 'react-native';
+import { api } from '../../lib/api';
+import { Post } from '../../lib/types';
+import { COLORS } from '../../constants/config';
+import PostCard from '../../components/PostCard';
+
+export default function HomeScreen() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const fetchPosts = useCallback(async () => {
+    const res = await api.get('/api/posts/feed.php');
+    if (res.success) setPosts(res.posts || []);
+    setLoading(false);
+    setRefreshing(false);
+  }, []);
+
+  useEffect(() => { fetchPosts(); }, [fetchPosts]);
+
+  const onRefresh = () => { setRefreshing(true); fetchPosts(); };
+
+  if (loading) {
+    return <View style={styles.center}><Text>Loading...</Text></View>;
+  }
+
+  return (
+    <FlatList
+      data={posts}
+      keyExtractor={(item) => item.postid}
+      renderItem={({ item }) => <PostCard post={item} />}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.primary} />}
+      contentContainerStyle={posts.length === 0 ? styles.center : styles.list}
+      ListEmptyComponent={<Text style={styles.empty}>No posts yet. Follow someone to see their posts!</Text>}
+    />
+  );
+}
+
+const styles = StyleSheet.create({
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.background },
+  list: { paddingVertical: 8, backgroundColor: COLORS.background },
+  empty: { textAlign: 'center', color: COLORS.textSecondary, marginTop: 40, fontSize: 16 },
+});

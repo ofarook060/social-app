@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "SYK Social",
+    "slug": "syk-social",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "syksocial",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sykmm.social"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#1877F2",
+        "foregroundImage": "./assets/icon.png"
+      },
+      "package": "com.sykmm.social"
+    },
+    "web": {
+      "favicon": "./assets/icon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ]
+  }
+}
