@@ -17,7 +17,18 @@ export default function HomeScreen() {
     setRefreshing(false);
   }, []);
 
-  useEffect(() => { fetchPosts(); }, [fetchPosts]);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const res = await api.get('/api/posts/feed.php');
+      if (!cancelled) {
+        if (res.success) setPosts(res.posts || []);
+        setLoading(false);
+        setRefreshing(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
 
   const onRefresh = () => { setRefreshing(true); fetchPosts(); };
 

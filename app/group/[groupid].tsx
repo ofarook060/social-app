@@ -3,15 +3,12 @@ import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, RefreshContr
 import { useLocalSearchParams } from 'expo-router';
 import { api } from '../../lib/api';
 import { Group, Post } from '../../lib/types';
-import { imageUrl, fullName } from '../../lib/utils';
+import { imageUrl } from '../../lib/utils';
 import { COLORS } from '../../constants/config';
-import { Ionicons } from '@expo/vector-icons';
-import { useAuth } from '../../lib/auth';
 import PostCard from '../../components/PostCard';
 
 export default function GroupScreen() {
   const { groupid } = useLocalSearchParams<{ groupid: string }>();
-  const { user: me } = useAuth();
   const [group, setGroup] = useState<Group | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
   const [isMember, setIsMember] = useState(false);
@@ -36,7 +33,27 @@ export default function GroupScreen() {
     setRefreshing(false);
   }, [groupid]);
 
-  useEffect(() => { fetchGroup(); }, [fetchGroup]);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const [infoRes, postsRes] = await Promise.all([
+        api.get(`/api/groups/info.php?groupid=${groupid}`),
+        api.get(`/api/groups/posts.php?groupid=${groupid}`),
+      ]);
+      if (!cancelled) {
+        if (infoRes.success) {
+          setGroup(infoRes.group);
+          setIsMember(infoRes.is_member);
+          setMyRole(infoRes.my_role);
+          setMemberCount(infoRes.member_count);
+        }
+        if (postsRes.success) setPosts(postsRes.posts || []);
+        setLoading(false);
+        setRefreshing(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [groupid]);
 
   const onRefresh = () => { setRefreshing(true); fetchGroup(); };
 

@@ -17,7 +17,18 @@ export default function MessagesScreen() {
     setRefreshing(false);
   }, []);
 
-  useEffect(() => { fetchThreads(); }, [fetchThreads]);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const res = await api.get('/api/messages/threads.php');
+      if (!cancelled) {
+        if (res.success) setThreads(res.threads || []);
+        setLoading(false);
+        setRefreshing(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
 
   const onRefresh = () => { setRefreshing(true); fetchThreads(); };
 

@@ -6,11 +6,9 @@ import { Post } from '../../lib/types';
 import { imageUrl, fullName, timeAgo } from '../../lib/utils';
 import { COLORS } from '../../constants/config';
 import { Ionicons } from '@expo/vector-icons';
-import { useAuth } from '../../lib/auth';
 
 export default function PostScreen() {
   const { postid } = useLocalSearchParams<{ postid: string }>();
-  const { user } = useAuth();
   const [post, setPost] = useState<Post | null>(null);
   const [comments, setComments] = useState<Post[]>([]);
   const [liked, setLiked] = useState(false);
@@ -29,7 +27,22 @@ export default function PostScreen() {
     setLoading(false);
   }, [postid]);
 
-  useEffect(() => { fetchPost(); }, [fetchPost]);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const res = await api.get(`/api/posts/single.php?postid=${postid}`);
+      if (!cancelled) {
+        if (res.success) {
+          setPost(res.post);
+          setComments(res.comments || []);
+          setLiked(res.liked_by_me);
+          setLikeCount(res.likes || 0);
+        }
+        setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [postid]);
 
   const handleLike = async () => {
     const res = await api.post('/api/like.php', { content_id: parseInt(postid!), type: 'post' });

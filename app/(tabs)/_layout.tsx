@@ -3,33 +3,6 @@ import { useAuth } from '../../lib/auth';
 import { Ionicons } from '@expo/vector-icons';
 import { View, ActivityIndicator } from 'react-native';
 import { COLORS } from '../../constants/config';
-import { api } from '../../lib/api';
-import { useEffect, useState } from 'react';
-
-function NotificationBadge() {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(async () => {
-      const res = await api.get('/api/notifications/count.php');
-      if (res.success) setCount(res.count || 0);
-    }, 30000);
-    api.get('/api/notifications/count.php').then((res) => {
-      if (res.success) setCount(res.count || 0);
-    });
-    return () => clearInterval(interval);
-  }, []);
-
-  if (!count) return null;
-  return (
-    <View style={{
-      position: 'absolute', top: -4, right: -8,
-      backgroundColor: COLORS.error, borderRadius: 10,
-      minWidth: 18, height: 18, justifyContent: 'center', alignItems: 'center',
-      paddingHorizontal: 4,
-    }}>
-    </View>
-  );
-}
 
 export default function TabsLayout() {
   const { user, loading } = useAuth();

@@ -56,7 +56,7 @@ export default function CreatePostScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.label}>What's on your mind?</Text>
+      <Text style={styles.label}>What&apos;s on your mind?</Text>
       <TextInput
         style={styles.textInput}
         placeholder="Write a post..."

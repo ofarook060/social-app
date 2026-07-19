@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, Image } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { api } from '../../lib/api';
-import { Message, User } from '../../lib/types';
+import { Message } from '../../lib/types';
 import { imageUrl, timeAgo } from '../../lib/utils';
 import { COLORS } from '../../constants/config';
 import { Ionicons } from '@expo/vector-icons';
@@ -13,20 +13,26 @@ export default function ChatScreen() {
   const { user: me } = useAuth();
   const [messages, setMessages] = useState<Message[]>([]);
   const [text, setText] = useState('');
-  const [loading, setLoading] = useState(true);
   const flatListRef = useRef<FlatList>(null);
 
   const fetchMessages = useCallback(async () => {
     const res = await api.get(`/api/messages/read.php?userid=${userid}`);
     if (res.success) setMessages(res.messages || []);
-    setLoading(false);
   }, [userid]);
 
   useEffect(() => {
-    fetchMessages();
-    const interval = setInterval(fetchMessages, 5000);
-    return () => clearInterval(interval);
-  }, [fetchMessages]);
+    let cancelled = false;
+    (async () => {
+      const res = await api.get(`/api/messages/read.php?userid=${userid}`);
+      if (!cancelled && res.success) setMessages(res.messages || []);
+    })();
+    const interval = setInterval(() => {
+      api.get(`/api/messages/read.php?userid=${userid}`).then((res) => {
+        if (res.success) setMessages(res.messages || []);
+      });
+    }, 5000);
+    return () => { cancelled = true; clearInterval(interval); };
+  }, [userid]);
 
   const handleSend = async () => {
     if (!text.trim()) return;

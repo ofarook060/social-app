@@ -4,7 +4,7 @@ import { api } from '../../lib/api';
 import { Notification } from '../../lib/types';
 import { COLORS } from '../../constants/config';
 import { Ionicons } from '@expo/vector-icons';
-import { timeAgo, imageUrl, fullName, stripHtml } from '../../lib/utils';
+import { timeAgo, fullName } from '../../lib/utils';
 import { router } from 'expo-router';
 
 function getActivityIcon(activity: string) {
@@ -43,7 +43,18 @@ export default function NotificationsScreen() {
     setRefreshing(false);
   }, []);
 
-  useEffect(() => { fetchNotifications(); }, [fetchNotifications]);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const res = await api.get('/api/notifications/list.php');
+      if (!cancelled) {
+        if (res.success) setNotifications(res.notifications || []);
+        setLoading(false);
+        setRefreshing(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
 
   const onRefresh = () => { setRefreshing(true); fetchNotifications(); };
 

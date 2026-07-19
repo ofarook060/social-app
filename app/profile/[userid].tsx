@@ -5,7 +5,6 @@ import { api } from '../../lib/api';
 import { User, Post } from '../../lib/types';
 import { imageUrl, fullName, isOnline } from '../../lib/utils';
 import { COLORS } from '../../constants/config';
-import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../../lib/auth';
 import PostCard from '../../components/PostCard';
 
@@ -38,7 +37,29 @@ export default function ProfileScreen() {
     setRefreshing(false);
   }, [userid, isOwn, me]);
 
-  useEffect(() => { fetchProfile(); }, [fetchProfile]);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const [profileRes, postsRes] = await Promise.all([
+        api.get(`/api/profile.php?user_id=${userid}`),
+        api.get(`/api/posts.php?user_id=${userid}&type=profile`),
+      ]);
+      if (!cancelled) {
+        if (profileRes.success) setProfile(profileRes.user);
+        if (postsRes.success) setPosts(postsRes.posts || []);
+
+        if (!isOwn && me) {
+          const followRes = await api.get('/api/user/following.php');
+          if (followRes.success) {
+            setFollowing(followRes.following?.some((f: any) => f.userid === userid));
+          }
+        }
+        setLoading(false);
+        setRefreshing(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [userid, isOwn, me]);
 
   const onRefresh = () => { setRefreshing(true); fetchProfile(); };
 
