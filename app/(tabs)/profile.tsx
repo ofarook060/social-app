@@ -93,7 +93,7 @@ export default function MyProfileTab() {
           style={styles.createPostBtn}
           onPress={() => router.push('/(tabs)/create')}
         >
-          <Ionicons name="create-outline" size={18} color={COLORS.white} />
+          <Ionicons name="create-outline" size={18} color={COLORS.emerald} />
           <Text style={styles.createPostText}>Create Post</Text>
         </TouchableOpacity>
 
@@ -126,7 +126,7 @@ export default function MyProfileTab() {
   );
 
   if (loading || !profile) {
-    return <View style={styles.center}><Text>Loading...</Text></View>;
+    return <View style={styles.center}><Text style={{ color: COLORS.gold }}>Loading...</Text></View>;
   }
 
   if (activeTab === TAB_FRIENDS) {
@@ -150,7 +150,7 @@ export default function MyProfileTab() {
             </View>
           </TouchableOpacity>
         )}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.primary} />}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.gold} />}
         ListEmptyComponent={<Text style={styles.emptyText}>No friends yet</Text>}
       />
     );
@@ -169,7 +169,7 @@ export default function MyProfileTab() {
             style={styles.photoGridItem}
           />
         )}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.primary} />}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.gold} />}
         ListEmptyComponent={<Text style={styles.emptyText}>No photos yet</Text>}
       />
     );
@@ -180,7 +180,7 @@ export default function MyProfileTab() {
       data={posts}
       keyExtractor={(item) => item.postid}
       renderItem={({ item }) => <PostCard post={item} />}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.primary} />}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.gold} />}
       ListHeaderComponent={renderHeader}
       contentContainerStyle={styles.list}
     />
@@ -188,11 +188,11 @@ export default function MyProfileTab() {
 }
 
 const styles = StyleSheet.create({
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.background },
-  list: { backgroundColor: COLORS.background },
-  cover: { width: '100%', height: 150, backgroundColor: COLORS.background },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.emerald },
+  list: { backgroundColor: COLORS.emerald },
+  cover: { width: '100%', height: 150, backgroundColor: COLORS.emeraldLight },
   profileSection: { alignItems: 'center', paddingVertical: 16, backgroundColor: COLORS.white, marginBottom: 0 },
-  profileImage: { width: 100, height: 100, borderRadius: 50, backgroundColor: COLORS.background, marginTop: -50, borderWidth: 3, borderColor: COLORS.white },
+  profileImage: { width: 100, height: 100, borderRadius: 50, backgroundColor: COLORS.background, marginTop: -50, borderWidth: 3, borderColor: COLORS.gold },
   name: { fontSize: 20, fontWeight: 'bold', color: COLORS.text, marginTop: 10 },
   tag: { fontSize: 14, color: COLORS.textSecondary, marginTop: 2 },
   online: { fontSize: 13, color: COLORS.online, marginTop: 4 },
@@ -203,21 +203,21 @@ const styles = StyleSheet.create({
   statLabel: { fontSize: 13, color: COLORS.textSecondary },
   createPostBtn: {
     marginTop: 16, paddingHorizontal: 24, paddingVertical: 10,
-    borderRadius: 8, backgroundColor: COLORS.primary, flexDirection: 'row', alignItems: 'center', gap: 6,
+    borderRadius: 12, backgroundColor: COLORS.gold, flexDirection: 'row', alignItems: 'center', gap: 6,
   },
-  createPostText: { color: COLORS.white, fontWeight: '600', fontSize: 15 },
+  createPostText: { color: COLORS.emerald, fontWeight: '600', fontSize: 15 },
   logoutBtn: {
     marginTop: 8, paddingHorizontal: 40, paddingVertical: 8,
-    borderRadius: 8, backgroundColor: COLORS.background, borderWidth: 1, borderColor: COLORS.border,
+    borderRadius: 12, backgroundColor: COLORS.emerald, borderWidth: 1, borderColor: COLORS.emeraldLight,
   },
-  logoutText: { color: COLORS.text, fontWeight: '600', fontSize: 15 },
+  logoutText: { color: COLORS.gold, fontWeight: '600', fontSize: 15 },
   tabBar: {
     flexDirection: 'row', backgroundColor: COLORS.white, borderBottomWidth: 1, borderBottomColor: COLORS.border,
   },
   tab: { flex: 1, alignItems: 'center', paddingVertical: 12 },
-  activeTab: { borderBottomWidth: 2, borderBottomColor: COLORS.primary },
+  activeTab: { borderBottomWidth: 2, borderBottomColor: COLORS.gold },
   tabText: { fontSize: 14, fontWeight: '500', color: COLORS.textSecondary },
-  activeTabText: { color: COLORS.primary, fontWeight: '600' },
+  activeTabText: { color: COLORS.gold, fontWeight: '600' },
   friendItem: {
     flexDirection: 'row', alignItems: 'center', padding: 12,
     backgroundColor: COLORS.white, borderBottomWidth: 1, borderBottomColor: COLORS.border,
@@ -226,6 +226,6 @@ const styles = StyleSheet.create({
   friendInfo: { marginLeft: 12, flex: 1 },
   friendName: { fontSize: 15, fontWeight: '600', color: COLORS.text },
   friendOnline: { fontSize: 12, color: COLORS.online, marginTop: 2 },
-  photoGridItem: { width: '33.33%', aspectRatio: 1, borderWidth: 1, borderColor: COLORS.background },
-  emptyText: { textAlign: 'center', color: COLORS.textSecondary, marginTop: 30, fontSize: 16 },
+  photoGridItem: { width: '33.33%', aspectRatio: 1, borderWidth: 1, borderColor: COLORS.emerald },
+  emptyText: { textAlign: 'center', color: COLORS.goldLight, marginTop: 30, fontSize: 16 },
 });

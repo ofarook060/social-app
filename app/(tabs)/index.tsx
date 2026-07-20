@@ -33,7 +33,7 @@ export default function HomeScreen() {
   const onRefresh = () => { setRefreshing(true); fetchPosts(); };
 
   if (loading) {
-    return <View style={styles.center}><Text>Loading...</Text></View>;
+    return <View style={styles.center}><Text style={{ color: COLORS.gold }}>Loading...</Text></View>;
   }
 
   return (
@@ -41,7 +41,7 @@ export default function HomeScreen() {
       data={posts}
       keyExtractor={(item) => item.postid}
       renderItem={({ item }) => <PostCard post={item} />}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.primary} />}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.gold} />}
       contentContainerStyle={posts.length === 0 ? styles.center : styles.list}
       ListEmptyComponent={<Text style={styles.empty}>No posts yet. Follow someone to see their posts!</Text>}
     />
@@ -49,7 +49,7 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.background },
-  list: { paddingVertical: 8, backgroundColor: COLORS.background },
-  empty: { textAlign: 'center', color: COLORS.textSecondary, marginTop: 40, fontSize: 16 },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.emerald },
+  list: { paddingVertical: 8, backgroundColor: COLORS.emerald },
+  empty: { textAlign: 'center', color: COLORS.goldLight, marginTop: 40, fontSize: 16 },
 });

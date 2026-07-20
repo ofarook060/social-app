@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', padding: 12,
     backgroundColor: COLORS.white, borderBottomWidth: 1, borderBottomColor: COLORS.border,
   },
-  unread: { backgroundColor: '#E3F2FD' },
+  unread: { backgroundColor: '#1A3D3B' },
   avatar: { width: 50, height: 50, borderRadius: 25, backgroundColor: COLORS.background },
   info: { flex: 1, marginLeft: 12 },
   name: { fontWeight: '600', fontSize: 15, color: COLORS.text },
@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
   right: { alignItems: 'flex-end', gap: 6 },
   time: { fontSize: 12, color: COLORS.textSecondary },
   badge: {
-    backgroundColor: COLORS.primary, borderRadius: 10, minWidth: 20, height: 20,
+    backgroundColor: COLORS.gold, borderRadius: 10, minWidth: 20, height: 20,
     justifyContent: 'center', alignItems: 'center', paddingHorizontal: 6,
   },
-  badgeText: { color: COLORS.white, fontSize: 11, fontWeight: '600' },
+  badgeText: { color: COLORS.emerald, fontSize: 11, fontWeight: '600' },
 });

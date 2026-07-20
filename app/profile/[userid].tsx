@@ -69,7 +69,7 @@ export default function ProfileScreen() {
   };
 
   if (loading || !profile) {
-    return <View style={styles.center}><Text>Loading...</Text></View>;
+    return <View style={styles.center}><Text style={{ color: COLORS.gold }}>Loading...</Text></View>;
   }
 
   return (
@@ -77,7 +77,7 @@ export default function ProfileScreen() {
       data={posts}
       keyExtractor={(item) => item.postid}
       renderItem={({ item }) => <PostCard post={item} />}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.primary} />}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.gold} />}
       ListHeaderComponent={
         <View>
           <Image
@@ -120,11 +120,11 @@ export default function ProfileScreen() {
 }
 
 const styles = StyleSheet.create({
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  list: { backgroundColor: COLORS.background },
-  cover: { width: '100%', height: 150, backgroundColor: COLORS.background },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.emerald },
+  list: { backgroundColor: COLORS.emerald },
+  cover: { width: '100%', height: 150, backgroundColor: COLORS.emeraldLight },
   profileSection: { alignItems: 'center', paddingVertical: 16, backgroundColor: COLORS.white, marginBottom: 8 },
-  profileImage: { width: 100, height: 100, borderRadius: 50, backgroundColor: COLORS.background, marginTop: -50, borderWidth: 3, borderColor: COLORS.white },
+  profileImage: { width: 100, height: 100, borderRadius: 50, backgroundColor: COLORS.background, marginTop: -50, borderWidth: 3, borderColor: COLORS.gold },
   name: { fontSize: 20, fontWeight: 'bold', color: COLORS.text, marginTop: 10 },
   tag: { fontSize: 14, color: COLORS.textSecondary, marginTop: 2 },
   online: { fontSize: 13, color: COLORS.online, marginTop: 4 },
@@ -135,9 +135,9 @@ const styles = StyleSheet.create({
   statLabel: { fontSize: 13, color: COLORS.textSecondary },
   followBtn: {
     marginTop: 16, paddingHorizontal: 40, paddingVertical: 10,
-    borderRadius: 8, backgroundColor: COLORS.primary,
+    borderRadius: 12, backgroundColor: COLORS.gold,
   },
   followingBtn: { backgroundColor: COLORS.white, borderWidth: 1, borderColor: COLORS.border },
-  followText: { color: COLORS.white, fontWeight: '600', fontSize: 15 },
+  followText: { color: COLORS.emerald, fontWeight: '600', fontSize: 15 },
   followingText: { color: COLORS.text },
 });

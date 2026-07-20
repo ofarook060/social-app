@@ -33,7 +33,7 @@ export default function MessagesScreen() {
   const onRefresh = () => { setRefreshing(true); fetchThreads(); };
 
   if (loading) {
-    return <View style={styles.center}><Text>Loading...</Text></View>;
+    return <View style={styles.center}><Text style={{ color: COLORS.gold }}>Loading...</Text></View>;
   }
 
   return (
@@ -41,7 +41,7 @@ export default function MessagesScreen() {
       data={threads}
       keyExtractor={(item) => item.msgid}
       renderItem={({ item }) => <ThreadCard thread={item} />}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.primary} />}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.gold} />}
       contentContainerStyle={threads.length === 0 ? styles.center : styles.list}
       ListEmptyComponent={<Text style={styles.empty}>No messages yet</Text>}
     />
@@ -49,7 +49,7 @@ export default function MessagesScreen() {
 }
 
 const styles = StyleSheet.create({
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.background },
-  list: { backgroundColor: COLORS.background },
-  empty: { textAlign: 'center', color: COLORS.textSecondary, marginTop: 40, fontSize: 16 },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.emerald },
+  list: { backgroundColor: COLORS.emerald },
+  empty: { textAlign: 'center', color: COLORS.goldLight, marginTop: 40, fontSize: 16 },
 });

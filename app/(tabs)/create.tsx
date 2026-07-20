@@ -60,6 +60,7 @@ export default function CreatePostScreen() {
       <TextInput
         style={styles.textInput}
         placeholder="Write a post..."
+        placeholderTextColor={COLORS.textSecondary}
         value={text}
         onChangeText={setText}
         multiline
@@ -78,7 +79,7 @@ export default function CreatePostScreen() {
 
       <View style={styles.actions}>
         <TouchableOpacity style={styles.imageButton} onPress={pickImage}>
-          <Ionicons name="image" size={24} color={COLORS.primary} />
+          <Ionicons name="image" size={24} color={COLORS.gold} />
           <Text style={styles.imageButtonText}>Photo</Text>
         </TouchableOpacity>
       </View>
@@ -95,26 +96,27 @@ export default function CreatePostScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: COLORS.background },
+  container: { flex: 1, backgroundColor: COLORS.emerald },
   content: { padding: 16 },
-  label: { fontSize: 18, fontWeight: '600', marginBottom: 12, color: COLORS.text },
+  label: { fontSize: 18, fontWeight: '600', marginBottom: 12, color: COLORS.gold },
   textInput: {
-    backgroundColor: COLORS.white, borderRadius: 8, padding: 14, fontSize: 16,
+    backgroundColor: COLORS.white, borderRadius: 12, padding: 14, fontSize: 16,
     minHeight: 120, borderWidth: 1, borderColor: COLORS.border, marginBottom: 12,
+    color: COLORS.text,
   },
-  imagePreview: { position: 'relative', marginBottom: 12, borderRadius: 8, overflow: 'hidden' },
-  previewImage: { width: '100%', height: 200, borderRadius: 8 },
+  imagePreview: { position: 'relative', marginBottom: 12, borderRadius: 12, overflow: 'hidden' },
+  previewImage: { width: '100%', height: 200, borderRadius: 12 },
   removeImage: { position: 'absolute', top: 4, right: 4 },
   actions: { flexDirection: 'row', marginBottom: 16 },
   imageButton: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
-    padding: 10, borderRadius: 8, backgroundColor: COLORS.white,
-    borderWidth: 1, borderColor: COLORS.border,
+    padding: 10, borderRadius: 12, backgroundColor: COLORS.emeraldLight,
+    borderWidth: 1, borderColor: COLORS.gold,
   },
-  imageButtonText: { fontSize: 14, color: COLORS.primary, fontWeight: '500' },
+  imageButtonText: { fontSize: 14, color: COLORS.gold, fontWeight: '500' },
   postButton: {
-    backgroundColor: COLORS.primary, borderRadius: 8, padding: 14, alignItems: 'center',
+    backgroundColor: COLORS.gold, borderRadius: 12, padding: 14, alignItems: 'center',
   },
   postButtonDisabled: { opacity: 0.6 },
-  postButtonText: { color: COLORS.white, fontSize: 16, fontWeight: '600' },
+  postButtonText: { color: COLORS.emerald, fontSize: 16, fontWeight: '600' },
 });

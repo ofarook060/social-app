@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { View, ActivityIndicator, Image, TouchableOpacity } from 'react-native';
 import { COLORS } from '../../src/constants/config';
 import { imageUrl } from '../../src/lib/utils';
+import Logo from '../../components/Logo';
 
 export default function TabsLayout() {
   const { user, loading } = useAuth();
@@ -11,8 +12,8 @@ export default function TabsLayout() {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color={COLORS.primary} />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.emerald }}>
+        <ActivityIndicator size="large" color={COLORS.gold} />
       </View>
     );
   }
@@ -24,39 +25,45 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: COLORS.primary,
-        tabBarInactiveTintColor: COLORS.textSecondary,
+        tabBarActiveTintColor: COLORS.gold,
+        tabBarInactiveTintColor: 'rgba(255,255,255,0.5)',
         tabBarStyle: {
-          backgroundColor: COLORS.white,
+          backgroundColor: COLORS.emerald,
           borderTopWidth: 1,
-          borderTopColor: COLORS.border,
+          borderTopColor: COLORS.emeraldLight,
           paddingBottom: 4,
           height: 56,
         },
         tabBarLabelStyle: { fontSize: 11, fontWeight: '500' },
-        headerStyle: { backgroundColor: COLORS.white, elevation: 0, shadowOpacity: 0, borderBottomWidth: 1, borderBottomColor: COLORS.border },
-        headerTintColor: COLORS.text,
-        headerTitleStyle: { fontWeight: 'bold', fontSize: 20, color: COLORS.primary },
+        headerStyle: {
+          backgroundColor: COLORS.emerald,
+          elevation: 0,
+          shadowOpacity: 0,
+          borderBottomWidth: 1,
+          borderBottomColor: COLORS.emeraldLight,
+        },
+        headerTintColor: COLORS.gold,
+        headerTitleStyle: { fontWeight: 'bold', fontSize: 20, color: COLORS.gold },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          headerTitle: 'SYK Social',
+          headerTitle: () => <Logo size="small" showTitle={true} />,
           headerRight: () => (
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginRight: 12 }}>
               <TouchableOpacity
                 onPress={() => router.push('/(tabs)/search')}
-                style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: COLORS.background, justifyContent: 'center', alignItems: 'center' }}
+                style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: COLORS.emeraldLight, justifyContent: 'center', alignItems: 'center' }}
               >
-                <Ionicons name="search" size={20} color={COLORS.text} />
+                <Ionicons name="search" size={20} color={COLORS.white} />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => router.push('/(tabs)/messages')}
-                style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: COLORS.background, justifyContent: 'center', alignItems: 'center' }}
+                style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: COLORS.emeraldLight, justifyContent: 'center', alignItems: 'center' }}
               >
-                <Ionicons name="messenger" size={20} color={COLORS.text} />
+                <Ionicons name="chatbubbles" size={20} color={COLORS.white} />
               </TouchableOpacity>
             </View>
           ),
@@ -72,7 +79,7 @@ export default function TabsLayout() {
             user.profile_image ? (
               <Image
                 source={{ uri: imageUrl(user.profile_image) }}
-                style={{ width: size, height: size, borderRadius: size / 2, borderWidth: color === COLORS.primary ? 2 : 0, borderColor: COLORS.primary }}
+                style={{ width: size, height: size, borderRadius: size / 2, borderWidth: color === COLORS.gold ? 2 : 0, borderColor: COLORS.gold }}
               />
             ) : (
               <Ionicons name="person" size={size} color={color} />

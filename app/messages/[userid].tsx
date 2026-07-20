@@ -73,12 +73,13 @@ export default function ChatScreen() {
         <TextInput
           style={styles.input}
           placeholder="Type a message..."
+          placeholderTextColor={COLORS.textSecondary}
           value={text}
           onChangeText={setText}
           multiline
         />
         <TouchableOpacity onPress={handleSend} style={styles.sendBtn} disabled={!text.trim()}>
-          <Ionicons name="send" size={24} color={text.trim() ? COLORS.primary : COLORS.textSecondary} />
+          <Ionicons name="send" size={24} color={text.trim() ? COLORS.gold : COLORS.textSecondary} />
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -86,18 +87,18 @@ export default function ChatScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: COLORS.background },
+  container: { flex: 1, backgroundColor: COLORS.emerald },
   list: { padding: 12, paddingBottom: 8 },
   bubble: {
     maxWidth: '75%', padding: 10, borderRadius: 16, marginBottom: 6,
   },
-  sent: { alignSelf: 'flex-end', backgroundColor: COLORS.primary, borderBottomRightRadius: 4 },
+  sent: { alignSelf: 'flex-end', backgroundColor: COLORS.gold, borderBottomRightRadius: 4 },
   received: { alignSelf: 'flex-start', backgroundColor: COLORS.white, borderBottomLeftRadius: 4 },
   msgText: { fontSize: 15, color: COLORS.text },
-  msgTextSent: { color: COLORS.white },
-  msgImage: { width: 200, height: 150, borderRadius: 8, marginTop: 4 },
+  msgTextSent: { color: COLORS.emerald },
+  msgImage: { width: 200, height: 150, borderRadius: 12, marginTop: 4 },
   msgTime: { fontSize: 10, color: COLORS.textSecondary, marginTop: 4, alignSelf: 'flex-end' },
-  msgTimeSent: { color: 'rgba(255,255,255,0.7)' },
+  msgTimeSent: { color: COLORS.emeraldLight },
   inputBar: {
     flexDirection: 'row', alignItems: 'flex-end', padding: 10,
     backgroundColor: COLORS.white, borderTopWidth: 1, borderTopColor: COLORS.border,
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1, backgroundColor: COLORS.background, borderRadius: 20,
     paddingHorizontal: 16, paddingVertical: 10, fontSize: 15,
-    maxHeight: 100, marginRight: 10,
+    maxHeight: 100, marginRight: 10, color: COLORS.text,
   },
   sendBtn: { padding: 6, marginBottom: 4 },
 });

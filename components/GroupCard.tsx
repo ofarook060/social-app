@@ -25,7 +25,7 @@ export default function GroupCard({ group }: Props) {
         <Text style={styles.name}>{group.first_name}</Text>
         <Text style={styles.type}>{group.group_type || 'Public'} Group</Text>
       </View>
-      <Ionicons name="chevron-forward" size={20} color={COLORS.textSecondary} />
+      <Ionicons name="chevron-forward" size={20} color={COLORS.gold} />
     </TouchableOpacity>
   );
 }

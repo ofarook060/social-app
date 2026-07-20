@@ -63,7 +63,7 @@ export default function GroupScreen() {
   };
 
   if (loading || !group) {
-    return <View style={styles.center}><Text>Loading...</Text></View>;
+    return <View style={styles.center}><Text style={{ color: COLORS.gold }}>Loading...</Text></View>;
   }
 
   return (
@@ -71,7 +71,7 @@ export default function GroupScreen() {
       data={posts}
       keyExtractor={(item) => item.postid}
       renderItem={({ item }) => <PostCard post={item} />}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.primary} />}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.gold} />}
       ListHeaderComponent={
         <View>
           <Image
@@ -99,17 +99,17 @@ export default function GroupScreen() {
 }
 
 const styles = StyleSheet.create({
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  list: { backgroundColor: COLORS.background },
-  cover: { width: '100%', height: 150, backgroundColor: COLORS.background },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.emerald },
+  list: { backgroundColor: COLORS.emerald },
+  cover: { width: '100%', height: 150, backgroundColor: COLORS.emeraldLight },
   info: { padding: 16, backgroundColor: COLORS.white, marginBottom: 8 },
   name: { fontSize: 22, fontWeight: 'bold', color: COLORS.text },
   meta: { fontSize: 14, color: COLORS.textSecondary, marginTop: 4 },
   about: { fontSize: 14, color: COLORS.text, marginTop: 8 },
   joinBtn: {
     marginTop: 16, paddingVertical: 12, paddingHorizontal: 30,
-    backgroundColor: COLORS.primary, borderRadius: 8, alignItems: 'center',
+    backgroundColor: COLORS.gold, borderRadius: 12, alignItems: 'center',
   },
-  joinText: { color: COLORS.white, fontWeight: '600', fontSize: 16 },
-  role: { fontSize: 13, color: COLORS.textSecondary, marginTop: 12, fontStyle: 'italic' },
+  joinText: { color: COLORS.emerald, fontWeight: '600', fontSize: 16 },
+  role: { fontSize: 13, color: COLORS.gold, marginTop: 12, fontStyle: 'italic' },
 });

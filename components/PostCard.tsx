@@ -41,11 +41,11 @@ export default function PostCard({ post }: Props) {
 
       <View style={styles.footer}>
         <View style={styles.stat}>
-          <Ionicons name="heart-outline" size={16} color={COLORS.textSecondary} />
+          <Ionicons name="heart-outline" size={16} color={COLORS.gold} />
           <Text style={styles.statText}>{post.likes || '0'}</Text>
         </View>
         <View style={styles.stat}>
-          <Ionicons name="chatbubble-outline" size={16} color={COLORS.textSecondary} />
+          <Ionicons name="chatbubble-outline" size={16} color={COLORS.gold} />
           <Text style={styles.statText}>{post.comments || '0'}</Text>
         </View>
       </View>
@@ -54,7 +54,12 @@ export default function PostCard({ post }: Props) {
 }
 
 const styles = StyleSheet.create({
-  card: { backgroundColor: COLORS.white, marginBottom: 8, paddingBottom: 8 },
+  card: {
+    backgroundColor: COLORS.white, marginBottom: 8, paddingBottom: 8,
+    borderRadius: 12, marginHorizontal: 8,
+    borderWidth: 1, borderColor: COLORS.border,
+    shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.08, shadowRadius: 4, elevation: 2,
+  },
   header: { flexDirection: 'row', alignItems: 'center', padding: 12 },
   avatar: { width: 40, height: 40, borderRadius: 20, backgroundColor: COLORS.background },
   headerText: { marginLeft: 10, flex: 1 },
@@ -67,5 +72,5 @@ const styles = StyleSheet.create({
     borderTopWidth: 1, borderTopColor: COLORS.border, marginTop: 10, gap: 20,
   },
   stat: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  statText: { fontSize: 13, color: COLORS.textSecondary },
+  statText: { fontSize: 13, color: COLORS.gold },
 });

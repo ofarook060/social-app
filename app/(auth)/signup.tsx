@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, KeyboardAvo
 import { Link, router } from 'expo-router';
 import { useAuth } from '../../src/lib/auth';
 import { COLORS } from '../../src/constants/config';
+import Logo from '../../components/Logo';
 
 export default function SignupScreen() {
   const { signup } = useAuth();
@@ -40,13 +41,12 @@ export default function SignupScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>SYK Social</Text>
-        <Text style={styles.subtitle}>Create your account</Text>
+        <Logo size="large" />
 
-        <TextInput style={styles.input} placeholder="First Name" value={firstName} onChangeText={setFirstName} />
-        <TextInput style={styles.input} placeholder="Last Name" value={lastName} onChangeText={setLastName} />
-        <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
-        <TextInput style={styles.input} placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry />
+        <TextInput style={styles.input} placeholder="First Name" placeholderTextColor={COLORS.textSecondary} value={firstName} onChangeText={setFirstName} />
+        <TextInput style={styles.input} placeholder="Last Name" placeholderTextColor={COLORS.textSecondary} value={lastName} onChangeText={setLastName} />
+        <TextInput style={styles.input} placeholder="Email" placeholderTextColor={COLORS.textSecondary} value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
+        <TextInput style={styles.input} placeholder="Password" placeholderTextColor={COLORS.textSecondary} value={password} onChangeText={setPassword} secureTextEntry />
 
         <View style={styles.genderRow}>
           {['Male', 'Female'].map((g) => (
@@ -79,25 +79,23 @@ export default function SignupScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: COLORS.background },
+  container: { flex: 1, backgroundColor: COLORS.emerald },
   content: { flexGrow: 1, justifyContent: 'center', paddingHorizontal: 24, paddingVertical: 40 },
-  title: { fontSize: 36, fontWeight: 'bold', color: COLORS.primary, textAlign: 'center', marginBottom: 8 },
-  subtitle: { fontSize: 16, color: COLORS.textSecondary, textAlign: 'center', marginBottom: 32 },
   input: {
-    backgroundColor: COLORS.white, borderRadius: 8, padding: 14, fontSize: 16,
-    marginBottom: 12, borderWidth: 1, borderColor: COLORS.border,
+    backgroundColor: COLORS.white, borderRadius: 12, padding: 14, fontSize: 16,
+    marginBottom: 12, borderWidth: 1, borderColor: COLORS.border, color: COLORS.text,
   },
   genderRow: { flexDirection: 'row', gap: 12, marginBottom: 12 },
   genderBtn: {
-    flex: 1, padding: 14, borderRadius: 8, borderWidth: 1, borderColor: COLORS.border,
+    flex: 1, padding: 14, borderRadius: 12, borderWidth: 1, borderColor: COLORS.border,
     alignItems: 'center',
   },
-  genderBtnActive: { backgroundColor: COLORS.primary, borderColor: COLORS.primary },
-  genderText: { fontSize: 16, color: COLORS.text },
-  genderTextActive: { color: COLORS.white },
-  button: { backgroundColor: COLORS.primary, borderRadius: 8, padding: 14, alignItems: 'center', marginTop: 8 },
+  genderBtnActive: { backgroundColor: COLORS.gold, borderColor: COLORS.gold },
+  genderText: { fontSize: 16, color: COLORS.white },
+  genderTextActive: { color: COLORS.emerald, fontWeight: '600' },
+  button: { backgroundColor: COLORS.gold, borderRadius: 12, padding: 14, alignItems: 'center', marginTop: 8 },
   buttonDisabled: { opacity: 0.6 },
-  buttonText: { color: COLORS.white, fontSize: 16, fontWeight: '600' },
+  buttonText: { color: COLORS.emerald, fontSize: 16, fontWeight: '600' },
   linkButton: { marginTop: 20, alignItems: 'center' },
-  linkText: { color: COLORS.primary, fontSize: 14 },
+  linkText: { color: COLORS.goldLight, fontSize: 14 },
 });

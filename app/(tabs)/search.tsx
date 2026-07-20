@@ -35,6 +35,7 @@ export default function SearchScreen() {
       <TextInput
         style={styles.searchInput}
         placeholder="Search friends and groups..."
+        placeholderTextColor={COLORS.textSecondary}
         value={query}
         onChangeText={setQuery}
         onSubmitEditing={handleSearch}
@@ -47,14 +48,14 @@ export default function SearchScreen() {
           style={[styles.tab, activeTab === TAB_PEOPLE && styles.activeTab]}
           onPress={() => setActiveTab(TAB_PEOPLE)}
         >
-          <Ionicons name="people" size={18} color={activeTab === TAB_PEOPLE ? COLORS.primary : COLORS.textSecondary} />
+          <Ionicons name="people" size={18} color={activeTab === TAB_PEOPLE ? COLORS.gold : COLORS.textSecondary} />
           <Text style={[styles.tabText, activeTab === TAB_PEOPLE && styles.activeTabText]}>People</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.tab, activeTab === TAB_GROUPS && styles.activeTab]}
           onPress={() => setActiveTab(TAB_GROUPS)}
         >
-          <Ionicons name="people" size={18} color={activeTab === TAB_GROUPS ? COLORS.primary : COLORS.textSecondary} />
+          <Ionicons name="people" size={18} color={activeTab === TAB_GROUPS ? COLORS.gold : COLORS.textSecondary} />
           <Text style={[styles.tabText, activeTab === TAB_GROUPS && styles.activeTabText]}>Groups</Text>
         </TouchableOpacity>
       </View>
@@ -88,10 +89,10 @@ export default function SearchScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: COLORS.background },
+  container: { flex: 1, backgroundColor: COLORS.emerald },
   searchInput: {
-    backgroundColor: COLORS.white, margin: 12, padding: 12, borderRadius: 8,
-    fontSize: 16, borderWidth: 1, borderColor: COLORS.border,
+    backgroundColor: COLORS.white, margin: 12, padding: 12, borderRadius: 12,
+    fontSize: 16, borderWidth: 1, borderColor: COLORS.border, color: COLORS.text,
   },
   tabBar: {
     flexDirection: 'row', backgroundColor: COLORS.white, borderBottomWidth: 1, borderBottomColor: COLORS.border,
@@ -100,9 +101,9 @@ const styles = StyleSheet.create({
     flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6,
     paddingVertical: 12,
   },
-  activeTab: { borderBottomWidth: 2, borderBottomColor: COLORS.primary },
+  activeTab: { borderBottomWidth: 2, borderBottomColor: COLORS.gold },
   tabText: { fontSize: 14, fontWeight: '500', color: COLORS.textSecondary },
-  activeTabText: { color: COLORS.primary, fontWeight: '600' },
+  activeTabText: { color: COLORS.gold, fontWeight: '600' },
   list: { paddingHorizontal: 12, paddingTop: 4 },
-  empty: { textAlign: 'center', color: COLORS.textSecondary, marginTop: 40, fontSize: 16 },
+  empty: { textAlign: 'center', color: COLORS.goldLight, marginTop: 40, fontSize: 16 },
 });

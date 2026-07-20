@@ -62,7 +62,7 @@ export default function PostScreen() {
   };
 
   if (loading || !post) {
-    return <View style={styles.center}><Text>Loading...</Text></View>;
+    return <View style={styles.center}><Text style={{ color: COLORS.gold }}>Loading...</Text></View>;
   }
 
   return (
@@ -91,11 +91,11 @@ export default function PostScreen() {
             ) : null}
             <View style={styles.stats}>
               <TouchableOpacity onPress={handleLike} style={styles.likeBtn}>
-                <Ionicons name={liked ? 'heart' : 'heart-outline'} size={22} color={liked ? COLORS.error : COLORS.textSecondary} />
+                <Ionicons name={liked ? 'heart' : 'heart-outline'} size={22} color={liked ? COLORS.error : COLORS.gold} />
                 <Text style={[styles.statText, liked && { color: COLORS.error }]}>{likeCount}</Text>
               </TouchableOpacity>
               <View style={styles.commentStat}>
-                <Ionicons name="chatbubble-outline" size={18} color={COLORS.textSecondary} />
+                <Ionicons name="chatbubble-outline" size={18} color={COLORS.gold} />
                 <Text style={styles.statText}>{comments.length} comments</Text>
               </View>
             </View>
@@ -122,11 +122,12 @@ export default function PostScreen() {
         <TextInput
           style={styles.input}
           placeholder="Write a comment..."
+          placeholderTextColor={COLORS.textSecondary}
           value={commentText}
           onChangeText={setCommentText}
         />
         <TouchableOpacity onPress={handleComment} style={styles.sendBtn}>
-          <Ionicons name="send" size={22} color={COLORS.primary} />
+          <Ionicons name="send" size={22} color={COLORS.gold} />
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -134,8 +135,8 @@ export default function PostScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: COLORS.background },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  container: { flex: 1, backgroundColor: COLORS.emerald },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.emerald },
   list: { paddingBottom: 20 },
   postHeader: { flexDirection: 'row', alignItems: 'center', padding: 12, backgroundColor: COLORS.white },
   avatar: { width: 40, height: 40, borderRadius: 20, backgroundColor: COLORS.background, marginRight: 10 },
@@ -149,9 +150,9 @@ const styles = StyleSheet.create({
   },
   likeBtn: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   commentStat: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  statText: { fontSize: 13, color: COLORS.textSecondary },
+  statText: { fontSize: 13, color: COLORS.gold },
   divider: { height: 1, backgroundColor: COLORS.border },
-  commentsTitle: { fontWeight: '600', fontSize: 14, color: COLORS.textSecondary, padding: 12 },
+  commentsTitle: { fontWeight: '600', fontSize: 14, color: COLORS.gold, padding: 12 },
   comment: { flexDirection: 'row', padding: 12, backgroundColor: COLORS.white, borderBottomWidth: 1, borderBottomColor: COLORS.border },
   commentAvatar: { width: 32, height: 32, borderRadius: 16, backgroundColor: COLORS.background, marginRight: 10 },
   commentContent: { flex: 1 },
@@ -162,6 +163,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', padding: 10,
     backgroundColor: COLORS.white, borderTopWidth: 1, borderTopColor: COLORS.border,
   },
-  input: { flex: 1, backgroundColor: COLORS.background, borderRadius: 20, paddingHorizontal: 16, paddingVertical: 10, fontSize: 14, marginRight: 10 },
+  input: { flex: 1, backgroundColor: COLORS.background, borderRadius: 20, paddingHorizontal: 16, paddingVertical: 10, fontSize: 14, marginRight: 10, color: COLORS.text },
   sendBtn: { padding: 6 },
 });

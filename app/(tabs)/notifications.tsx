@@ -73,7 +73,7 @@ export default function NotificationsScreen() {
   };
 
   if (loading) {
-    return <View style={styles.center}><Text>Loading...</Text></View>;
+    return <View style={styles.center}><Text style={{ color: COLORS.gold }}>Loading...</Text></View>;
   }
 
   return (
@@ -86,7 +86,7 @@ export default function NotificationsScreen() {
           onPress={() => handlePress(item)}
         >
           <View style={styles.avatar}>
-            <Ionicons name={getActivityIcon(item.activity) as any} size={20} color={COLORS.primary} />
+            <Ionicons name={getActivityIcon(item.activity) as any} size={20} color={COLORS.gold} />
           </View>
           <View style={styles.content}>
             <Text style={styles.name}>{fullName(item.first_name, item.last_name)}</Text>
@@ -95,7 +95,7 @@ export default function NotificationsScreen() {
           </View>
         </TouchableOpacity>
       )}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.primary} />}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.gold} />}
       contentContainerStyle={notifications.length === 0 ? styles.center : styles.list}
       ListEmptyComponent={<Text style={styles.empty}>No notifications yet</Text>}
     />
@@ -103,20 +103,20 @@ export default function NotificationsScreen() {
 }
 
 const styles = StyleSheet.create({
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.background },
-  list: { backgroundColor: COLORS.background },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.emerald },
+  list: { backgroundColor: COLORS.emerald },
   item: {
     flexDirection: 'row', padding: 14, backgroundColor: COLORS.white,
     borderBottomWidth: 1, borderBottomColor: COLORS.border,
   },
-  unread: { backgroundColor: '#E3F2FD' },
+  unread: { backgroundColor: '#1A3D3B' },
   avatar: {
-    width: 44, height: 44, borderRadius: 22, backgroundColor: COLORS.background,
+    width: 44, height: 44, borderRadius: 22, backgroundColor: COLORS.emeraldLight,
     justifyContent: 'center', alignItems: 'center', marginRight: 12,
   },
   content: { flex: 1 },
   name: { fontWeight: '600', fontSize: 15, color: COLORS.text },
   text: { fontSize: 14, color: COLORS.textSecondary, marginTop: 2 },
   time: { fontSize: 12, color: COLORS.textSecondary, marginTop: 4 },
-  empty: { textAlign: 'center', color: COLORS.textSecondary, marginTop: 40, fontSize: 16 },
+  empty: { textAlign: 'center', color: COLORS.goldLight, marginTop: 40, fontSize: 16 },
 });
