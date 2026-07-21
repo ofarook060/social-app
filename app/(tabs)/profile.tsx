@@ -132,6 +132,7 @@ export default function MyProfileTab() {
   if (activeTab === TAB_FRIENDS) {
     return (
       <FlatList
+        key="friends-tab"
         ListHeaderComponent={renderHeader}
         data={friends}
         keyExtractor={(item) => item.userid}
@@ -159,6 +160,7 @@ export default function MyProfileTab() {
   if (activeTab === TAB_PHOTOS) {
     return (
       <FlatList
+        key="photos-tab"
         ListHeaderComponent={renderHeader}
         data={photos}
         numColumns={3}
@@ -177,6 +179,7 @@ export default function MyProfileTab() {
 
   return (
     <FlatList
+      key="posts-tab"
       data={posts}
       keyExtractor={(item) => item.postid}
       renderItem={({ item }) => <PostCard post={item} />}
