@@ -12,6 +12,7 @@
       "bundleIdentifier": "com.sykmm.social"
     },
     "android": {
+      "ndkVersion": "27.1.12297006",
       "adaptiveIcon": {
         "backgroundColor": "#1877F2",
         "foregroundImage": "./assets/icon.png"
