@@ -30,11 +30,7 @@
       {
         "android": {
           "kotlinAsJavaSourceCompatibility": "21",
-          "extraKotlinCompilerArgs": ["-nowarn"],
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "866ef063-09ee-413c-af57-608f14a5c76e"
+          "extraKotlinCompilerArgs": ["-nowarn"]
       }
     }
   }
